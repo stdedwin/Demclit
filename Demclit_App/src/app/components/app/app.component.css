@@ -1,0 +1,9 @@
+.body {
+    min-height: calc(100vh - 134px);
+    margin-bottom: -20px;
+}
+
+h5 {
+    margin-top: 5%;
+    text-align: center;
+}

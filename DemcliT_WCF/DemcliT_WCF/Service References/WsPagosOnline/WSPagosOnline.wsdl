@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://co.com.movistar.ws.wspagosonline/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://co.com.movistar.ws.wspagosonline/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://co.com.movistar.ws.wspagosonline/">
+      <s:element name="PruebaWS">
+        <s:complexType />
+      </s:element>
+      <s:element name="PruebaWSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PruebaWSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarSaldo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestConsulta" type="tns:RequestConsulta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestConsulta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodConvenio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAdquiriente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControl" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumDocumento" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodOficina" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumTerminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DispositivoOrigen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultarSaldoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarSaldoResult" type="tns:ResponseConsPagoReint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseConsPagoReint">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NumControl" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodRespuesta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumDocumento" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTransaccion" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultarSaldoNombre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestConsulta" type="tns:RequestConsulta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarSaldoNombreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarSaldoNombreResult" type="tns:ResponseConsSaldoNombre" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseConsSaldoNombre">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NumControl" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodRespuesta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumDocumento" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTransaccion" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomCliente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Consulta" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AplicarPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestPago" type="tns:RequestPagoReintento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestPagoReintento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodConvenio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAutorizadora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAdquiriente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControl" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumDocumento" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTransaccion" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorEfectivo" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorCheque" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Jornada" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumAutorizacion" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodOficina" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumTerminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DispositivoOrigen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AplicarPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AplicarPagoResult" type="tns:ResponseConsPagoReint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReintentarPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestReintento" type="tns:RequestPagoReintento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReintentarPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReintentarPagoResult" type="tns:ResponseConsPagoReint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesaplicarPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestDesaplicarPago" type="tns:RequestDesaplicarPago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestDesaplicarPago">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodConvenio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAutorizadora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAdquiriente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControlPago" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControlDesaplicar" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumDocumento" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodOficina" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DispositivoOrigen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumTerminal" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTransaccion" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DesaplicarPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesaplicarPagoResult" type="tns:ResponseDespPagos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseDespPagos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControlDesaplicacion" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControlPago" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodRespuesta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumDocumento" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAdquiriente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTransaccion" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DesaplicarPagoSCL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestDesaplicarPago" type="tns:RequestDesaplicarPago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesaplicarPagoSCLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesaplicarPagoSCLResult" type="tns:ResponseDespPagos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AplicarPagoDistribuido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestPago" type="tns:RequestPagoDistribuido" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestPagoDistribuido">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodConvenio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAutorizadora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodEntAdquiriente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumControl" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoSCL" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorSCL" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorDavox" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorEfectivo" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorCheque" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Jornada" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumAutorizacion" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodOficina" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumTerminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DispositivoOrigen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AplicarPagoDistribuidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AplicarPagoDistribuidoResult" type="tns:ResponseConsPagoReint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PruebaWSSoapIn">
+    <wsdl:part name="parameters" element="tns:PruebaWS" />
+  </wsdl:message>
+  <wsdl:message name="PruebaWSSoapOut">
+    <wsdl:part name="parameters" element="tns:PruebaWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarSaldoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarSaldo" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarSaldoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarSaldoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarSaldoNombreSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarSaldoNombre" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarSaldoNombreSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarSaldoNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="AplicarPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:AplicarPago" />
+  </wsdl:message>
+  <wsdl:message name="AplicarPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:AplicarPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReintentarPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:ReintentarPago" />
+  </wsdl:message>
+  <wsdl:message name="ReintentarPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:ReintentarPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesaplicarPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:DesaplicarPago" />
+  </wsdl:message>
+  <wsdl:message name="DesaplicarPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:DesaplicarPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesaplicarPagoSCLSoapIn">
+    <wsdl:part name="parameters" element="tns:DesaplicarPagoSCL" />
+  </wsdl:message>
+  <wsdl:message name="DesaplicarPagoSCLSoapOut">
+    <wsdl:part name="parameters" element="tns:DesaplicarPagoSCLResponse" />
+  </wsdl:message>
+  <wsdl:message name="AplicarPagoDistribuidoSoapIn">
+    <wsdl:part name="parameters" element="tns:AplicarPagoDistribuido" />
+  </wsdl:message>
+  <wsdl:message name="AplicarPagoDistribuidoSoapOut">
+    <wsdl:part name="parameters" element="tns:AplicarPagoDistribuidoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSPagosOnlineServiceSoap">
+    <wsdl:operation name="PruebaWS">
+      <wsdl:input message="tns:PruebaWSSoapIn" />
+      <wsdl:output message="tns:PruebaWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSaldo">
+      <wsdl:input message="tns:ConsultarSaldoSoapIn" />
+      <wsdl:output message="tns:ConsultarSaldoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSaldoNombre">
+      <wsdl:input message="tns:ConsultarSaldoNombreSoapIn" />
+      <wsdl:output message="tns:ConsultarSaldoNombreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AplicarPago">
+      <wsdl:input message="tns:AplicarPagoSoapIn" />
+      <wsdl:output message="tns:AplicarPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReintentarPago">
+      <wsdl:input message="tns:ReintentarPagoSoapIn" />
+      <wsdl:output message="tns:ReintentarPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DesaplicarPago">
+      <wsdl:input message="tns:DesaplicarPagoSoapIn" />
+      <wsdl:output message="tns:DesaplicarPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DesaplicarPagoSCL">
+      <wsdl:input message="tns:DesaplicarPagoSCLSoapIn" />
+      <wsdl:output message="tns:DesaplicarPagoSCLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AplicarPagoDistribuido">
+      <wsdl:input message="tns:AplicarPagoDistribuidoSoapIn" />
+      <wsdl:output message="tns:AplicarPagoDistribuidoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSPagosOnlineServiceSoap" type="tns:WSPagosOnlineServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PruebaWS">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/PruebaWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSaldo">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/ConsultarSaldo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSaldoNombre">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/ConsultarSaldoNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AplicarPago">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/AplicarPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReintentarPago">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/ReintentarPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesaplicarPago">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/DesaplicarPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesaplicarPagoSCL">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/DesaplicarPagoSCL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AplicarPagoDistribuido">
+      <soap:operation soapAction="http://co.com.movistar.ws.wspagosonline/AplicarPagoDistribuido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSPagosOnlineServiceSoap12" type="tns:WSPagosOnlineServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PruebaWS">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/PruebaWS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSaldo">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/ConsultarSaldo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarSaldoNombre">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/ConsultarSaldoNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AplicarPago">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/AplicarPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReintentarPago">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/ReintentarPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesaplicarPago">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/DesaplicarPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesaplicarPagoSCL">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/DesaplicarPagoSCL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AplicarPagoDistribuido">
+      <soap12:operation soapAction="http://co.com.movistar.ws.wspagosonline/AplicarPagoDistribuido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSPagosOnlineService">
+    <wsdl:port name="WSPagosOnlineServiceSoap" binding="tns:WSPagosOnlineServiceSoap">
+      <soap:address location="http://10.80.10.203/WsPagosOnline/WSPagosOnline.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSPagosOnlineServiceSoap12" binding="tns:WSPagosOnlineServiceSoap12">
+      <soap12:address location="http://10.80.10.203/WsPagosOnline/WSPagosOnline.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

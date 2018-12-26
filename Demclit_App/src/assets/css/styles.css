@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background: url('../images/bg-oficina7.jpg') no-repeat fixed;
+  background-size: 120rem;
+}
+main{
+  min-height: calc(80vh);
+}
+
+@media print{
+  body{
+    background: none;
+  }
+}

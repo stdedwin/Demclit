@@ -1,0 +1,14 @@
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\bin\DemcliT_WCF.dll.config
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\bin\DemcliT_WCF.dll
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\bin\DemcliT_WCF.pdb
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\bin\ClosedXML.dll
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\bin\DocumentFormat.OpenXml.dll
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\bin\System.Data.OracleClient.dll
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.csprojAssemblyReference.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.App_Data.ConnectionSources.resources
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.App_Data.SCLQueries.resources
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.csproj.GenerateResource.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.csproj.CoreCompileInputs.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.csproj.CopyComplete
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.dll
+C:\Users\eatellezpi\source\Workspaces\Demclit\DemcliT_WCF\DemcliT_WCF\obj\Debug\DemcliT_WCF.pdb

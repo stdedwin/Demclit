@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemcliT_WCF", "DemcliT_WCF\DemcliT_WCF\DemcliT_WCF.csproj", "{115B21BE-A29D-4848-8F49-65D5AE103E85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demclit_App", "Demclit_App\Demclit_App.csproj", "{AA6F37E3-A522-40A4-AD31-07BA1C93D5A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demclit_Pagos_Reporte", "Demclit_Pagos_Reporte\Demclit_Pagos_Reporte.csproj", "{24A9AA56-600D-43DF-A0CF-DAB3D377980D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.80.135.56:8080/tfs/proyectosevolucion
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Demclit_App\\Demclit_App.csproj
+		SccProjectName1 = Demclit_App
+		SccLocalPath1 = Demclit_App
+		SccProjectUniqueName2 = DemcliT_WCF\\DemcliT_WCF\\DemcliT_WCF.csproj
+		SccProjectName2 = DemcliT_WCF/DemcliT_WCF
+		SccLocalPath2 = DemcliT_WCF\\DemcliT_WCF
+		SccProjectUniqueName3 = Demclit_Pagos_Reporte\\Demclit_Pagos_Reporte.csproj
+		SccProjectName3 = Demclit_Pagos_Reporte
+		SccLocalPath3 = Demclit_Pagos_Reporte
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{115B21BE-A29D-4848-8F49-65D5AE103E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{115B21BE-A29D-4848-8F49-65D5AE103E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{115B21BE-A29D-4848-8F49-65D5AE103E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{115B21BE-A29D-4848-8F49-65D5AE103E85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6F37E3-A522-40A4-AD31-07BA1C93D5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6F37E3-A522-40A4-AD31-07BA1C93D5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6F37E3-A522-40A4-AD31-07BA1C93D5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6F37E3-A522-40A4-AD31-07BA1C93D5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A9AA56-600D-43DF-A0CF-DAB3D377980D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A9AA56-600D-43DF-A0CF-DAB3D377980D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A9AA56-600D-43DF-A0CF-DAB3D377980D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A9AA56-600D-43DF-A0CF-DAB3D377980D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

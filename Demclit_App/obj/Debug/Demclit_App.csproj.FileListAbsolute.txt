@@ -1,0 +1,3 @@
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_App\obj\Debug\Demclit_App.csprojAssemblyReference.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_App\obj\Debug\Demclit_App.dll
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_App\obj\Debug\Demclit_App.pdb

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\eatellezpi\Documents\Publicaciones\DemclitB2B\WS\</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="API.svc">
+      <publishTime>07/04/2018 12:18:08</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.dll">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="bin/DemcliT_WCF.dll">
+      <publishTime>09/03/2018 18:27:29</publishTime>
+    </File>
+    <File Include="bin/DemcliT_WCF.pdb">
+      <publishTime>09/03/2018 18:27:29</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="bin/System.Data.OracleClient.dll">
+      <publishTime>05/28/2014 04:35:42</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Librerias/ClosedXML.dll">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Librerias/DocumentFormat.OpenXml.dll">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Resources/Mail_EComprobante.html">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.AplicarPagoDistribuidoResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.AplicarPagoResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.ConsultarSaldoNombreResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.ConsultarSaldoResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.DesaplicarPagoResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.DesaplicarPagoSCLResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.PruebaWSResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.ReintentarPagoResponse.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.ResponseConsPagoReint.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.ResponseConsSaldoNombre.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Service References/WsPagosOnline/DemcliT_WCF.WsPagosOnline.ResponseDespPagos.datasource">
+      <publishTime>07/04/2018 12:18:09</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/31/2018 15:17:23</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,60 @@
+<div class="row content">
+  <div class="input-field col s12 left" *ngIf="this.Reservar">
+    <button class="btn waves-effect waves-light" type="submit" (click)="nuevoProyecto()" >
+      <i class="material-icons left">add</i>Nuevo proyecto
+    </button>
+    
+  </div>
+  <div id="Proyectos" class="col s12" *ngIf="this.Consultar">
+    <table class="responsive-table highlight">
+      <thead>
+        <tr>
+          <th>Nombre Proyecto</th>
+          <th>Oportunidad</th>
+          <th>Nombre Cliente</th>
+          <th>Duración</th>
+          <th class="col s2" colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let proyecto of pagedItemsProyectos">
+          <td>{{proyecto.nombreProyecto}}</td>
+          <td>{{proyecto.idOportunidad}}</td>
+          <td>{{proyecto.nombreCliente}}</td>
+          <td>{{proyecto.duracion}}</td>
+          <td colspan="2">
+            <a class="btn-floating btn-small waves-effect waves-light green" *ngIf="this.Editar">
+              <i class="tiny material-icons" (click)="editarProyecto(proyecto.idProyecto)">edit</i>
+            </a>
+            <a class="btn-floating btn-small waves-effect waves-light red">
+              <i class="tiny material-icons" (click)="EliminarProyecto(proyecto.idProyecto)">delete</i>
+            </a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <!-- pager -->
+    <ul *ngIf="pagerProyectos.pages && pagerProyectos.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pagerProyectos.currentPage === 1}">
+        <a (click)="setPageProyectos(1)">Primero</a>
+      </li>
+      <li [ngClass]="{disabled:pagerProyectos.currentPage === 1}">
+        <a (click)="setPageProyectos(pagerProyectos.currentPage - 1)">Atras</a>
+      </li>
+      <li *ngFor="let page of pagerProyectos.pages" [ngClass]="{active:pagerProyectos.currentPage === page}">
+        <a (click)="setPageProyectos(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pagerProyectos.currentPage === pagerProyectos.totalPages}">
+        <a (click)="setPageProyectos(pagerProyectos.currentPage + 1)">Siguiente</a>
+      </li>
+      <li [ngClass]="{disabled:pagerProyectos.currentPage === pagerProyectos.totalPages}">
+        <a (click)="setPageProyectos(pagerProyectos.totalPages)">Ultimo</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col s12" *ngIf="!this.Consultar">
+    <span>No tiene acceso para consultar proyectos</span>
+  </div>
+</div>

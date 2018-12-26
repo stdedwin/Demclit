@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DemcliT_WCF.API" CodeBehind="API.svc.cs" %>

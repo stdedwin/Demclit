@@ -1,0 +1,132 @@
+<!--Código real-->
+<div class="row">
+  <div class="col s12" id="wrapper-pagoForm">
+    <form class="col s10 offset-s1 container-form blue-text" id="pagoForm" #pagoForm="ngForm" (ngSubmit)="OnSubmit(pagoForm)" >
+      <div class="col s12">
+        <ul class="tabs" id="tabs-pago-registro">
+          <li class="tab col s6"><a class="light-blue-text accent-3 active" href="#tab1">Información de Pago</a></li>
+          <li class="tab col s6"><a class="light-blue-text accent-3" href="#tab2">Información de Transacción</a></li>
+        </ul>
+      </div>
+
+      <div class="col s12 active" id="tab1">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="codCliente" name="CodCliente" type="number" class="validate"
+              max="999999999"
+              data-length="9"
+              (keypress)="maxLength($event)"
+              autofocus=""
+              ngModel
+              required>
+          <label class="blue-text" for="codCliente">Código de cliente</label>
+          <span class="helper-text" data-error="Campo obligatorio - Máximo 9 dígitos"></span>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">attach_money</i>
+          <input  id="monto" name="Monto" type="text" class="validate"
+              (keyup) = "formatValue($event)"
+              (keypress) = "isCharValid($event, 'number')"
+              ngModel
+              required >
+          <label class="blue-text" for="monto">Valor a pagar</label>
+          <span class="helper-text" data-error="Campo obligatorio - Númerico y punto (.) como separador de decimales - Monto máximo $4'millones.">El punto (.) se reconoce como separador de decimales. ¡Tenga cuidado al copiar y pegar el monto!</span>
+        </div>
+        <div class="input-field col s12 center">
+          <button class="waves-effect waves-teal btn-flat" type="button" (click)="nextTab()">
+            <i class="material-icons right">navigate_next</i>Continuar
+          </button>
+        </div>
+      </div>
+
+      <div class="col s12" id="tab2">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">business_center</i>
+            <select id="idFranquicia" name="IdFranquicia" ngModel required>
+              <option value="">Seleccione</option>
+            </select>
+          <label class="blue-text" for="idFranquicia">Franquicia</label>
+          <span class="helper-text" data-error="Campo obligatorio">Seleccione una opción de la lista</span>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">receipt</i>
+          <input id="numAutorizacion" name="NumAutorizacion"
+            class="validate"
+            data-length="6"
+            maxlength="6"
+            type="text"
+            (keyup) ="maxLength($event)"
+            (keypress) = "isCharValid($event, 'text')"
+            ngModel
+            required>
+          <label class="blue-text" for="NumAutorizacion">No. autorización voucher</label>
+          <span class="helper-text" data-error="Campo obligatorio">Ingrese el No. de autorización del voucher o comprobante de pago</span>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">credit_card</i>
+          <input id="numTarjeta" name="NumTarjeta"
+            class="validate"
+            max="9999"
+            data-length="4"
+            type="number"
+            (keypress) ="maxLength($event)"
+            ngModel
+            required>
+          <label class="blue-text" for="numTarjeta">Últimos 4 numeros de la tarjeta</label>
+          <span class="helper-text" data-error="Campo obligatorio y de solo números">Ingrese los últimos 4 números de la tarjeta debito/crédito del cliente</span>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">contact_mail</i>
+          <input class="validate" id="eMail" name="EMail"
+            pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+            type="text"
+            ngModel
+            required>
+          <label class="blue-text" for="eMail">Correo electrónico del cliente</label>
+          <span class="helper-text" data-error="Campo obligatorio - Formato de correo no válido">Ingrese el correo electrónico del cliente</span>
+        </div>
+
+        <div class="row flow-text" id="wrapper-buttons">
+          <div class="col s6 m3">
+            <button class="btn waves-effect waves-light" type="submit" [disabled]="!pagoForm.valid" *ngIf="!this.pagoAplicado && !this.pagoEnProceso">
+              <i class="material-icons left">send</i>Aplicar
+            </button>
+
+            <div class="preloader-wrapper active" *ngIf="this.pagoEnProceso">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="button" (click)="resetForm(pagoForm)" *ngIf="this.pagoAplicado">
+              <i class="material-icons left">add_box</i>Nuevo
+            </button>
+          </div>
+          <div class="col s6 m3" *ngIf="this.pagoAplicado">
+            <button class="btn-flat waves-effect waves-teal" type="button" (click)="enviarEComprobante()">
+              <i class="material-icons left">email</i>Correo
+            </button>
+          </div>
+          <div class="col s6 m3" *ngIf="this.pagoAplicado">
+            <button class="btn-flat waves-effect waves-teal" type="button" (click)="imprimirComprobante()" >
+              <i class="material-icons left">print</i>Imprimir
+            </button>
+          </div>
+          <div class="col s6 m3">
+            <button class="waves-effect waves-teal btn-flat" type="button" (click)="nextTab(false)">
+              <i class="material-icons left">navigate_before</i>Regresar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col s12 hide" id="wrapper-eComprobante">
+  </div>
+</div>

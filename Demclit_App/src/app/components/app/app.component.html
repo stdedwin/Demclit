@@ -1,0 +1,19 @@
+<nav-menu *ngIf="navMenuVisible"></nav-menu>
+<div class='row'>
+    <div class='col s12'>
+      <main class="container" id="appMain">
+        <router-outlet></router-outlet>
+      </main>
+      <div class="modal" id="appModal">
+        <div class="modal-content">
+          <h4 id="appModal-title">Modal Header</h4>
+          <p id="appModal-body">A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-action modal-close waves-effect waves-green btn-flat hide" id="appModal-btnDisagree">Disagre</button>
+          <button class="modal-action modal-close waves-effect waves-green btn-flat" id="appModal-btnAgree">Aceptar</button>
+        </div>
+      </div>
+    </div>
+</div>
+<app-footer *ngIf="footerVisible"></app-footer>

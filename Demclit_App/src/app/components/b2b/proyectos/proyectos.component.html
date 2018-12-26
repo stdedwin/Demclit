@@ -1,0 +1,537 @@
+<div class="row flow-text" id="wrapper-buttons">
+    <div class="col s12">
+        <!-- <button class="btn waves-effect waves-light">
+                    <i class="material-icons left">arrow_back</i>Regresar
+                </button> -->
+        <ul>
+            <li class="col s10">
+                <a class="btn-floating blue">
+                    <i class="material-icons" (click)="Regresar()">arrow_back</i>
+                </a>
+                <!-- <span class="white-text">Regresar</span> -->
+            </li>
+
+            <!-- <li class="col s1">
+                <a class="btn-floating green" [hidden]="!this.mostrarOpcionesProyecto">
+                    <i class="material-icons" (click)="Descargar()">file_download</i>
+                </a>
+            </li>
+            <li class="col s1">
+                <a class="btn-floating blue" [hidden]="!this.mostrarOpcionesProyecto">
+                    <i class="material-icons" (click)="ProyectoEstadoCambio()">arrow_forward</i>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+
+<ul id="proyecto-collapse" class="collapsible expandable">
+    <li class="active">
+        <!-- Inicio ingreso datos proyecto -->
+        <div class="collapsible-header">
+            <i class="material-icons">business_center</i>Información de Proyecto</div>
+        <div class="collapsible-body col s12 content ">
+            <form class="col s12 blue-text" (ngSubmit)="OnSubmitProyecto(proyectoForm)" [formGroup]="proyectoForm">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">track_changes</i>
+                    <input id="idOportunidad" name="IdOportunidad" type="text" class="validate" (keyup)="isCharValid($event, 'text')" (keypress)="maxLength($event)" max="9999999999" data-length="10" formControlName="idOportunidad" required>
+                    <label class="blue-text" for="idOportunidad" id="lblIdOportunidad">Oportunidad</label>
+                    <span class="helper-text" data-error="Campo obligatorio"></span>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="numIdentidadCliente" name="NumIdentidadCliente" type="number" class="validate" (keyup)="maxLength($event)" (keyup)="isCharValid($event, 'number')" (keypress)="maxLength($event)" max="99999999999" data-length="11" formControlName="numIdentidadCliente"
+                        ngModel required>
+                    <label class="blue-text" for="numIdentidadCliente" id="lblNumIdentidadCliente">No. identificación del cliente</label>
+                    <span class="helper-text" data-error="Campo obligatorio"></span>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">drafts</i>
+                    <input id="nombreProyecto" name="NombreProyecto" type="text" class="validate" formControlName="nombreProyecto" (keypress)="isCharValid($event, 'text')" (keyup)="maxLength($event)" maxlenght="100" data-length="100" ngModel required>
+                    <label class="blue-text" for="nombreProyecto" id="lblNombreProyecto">Nombre de proyecto</label>
+                    <span class="helper-text" data-error="Campo obligatorio"></span>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="nombreCliente" name="NombreCliente" type="text" class="validate" (keypress)="isCharValid($event, 'text')" (keyup)="maxLength($event)" maxlenght="150" data-length="150" formControlName="nombreCliente" ngModel required>
+                    <label class="blue-text" for="nombreCliente" id="lblNombreCliente">Nombre de cliente</label>
+                    <span class="helper-text" data-error="Campo obligatorio"></span>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">date_range</i>
+                    <input id="duracion" name="Duracion" type="number" class="validate" formControlName="duracion" (keyup)="isCharValid($event, 'number')" (keypress)="maxLength($event)" max="255" data-length="3" ngModel required>
+                    <label class="blue-text" for="duracion" id="lblDuracion">Duración</label>
+                    <span class="helper-text" data-error="Campo obligatorio - Valor máximo 255">Ingrese el valor en meses</span>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">crop_free</i>
+                    <select id="idGrupo" name="IdGrupo" class="validate" formControlName="idGrupo" ngModel required>
+                    </select>
+                    <label class="blue-text" for="idGrupo" id="lblIdGrupo">Segmento</label>
+                    <span class="helper-text" data-error="Campo obligatorio"></span>
+                </div>
+
+
+                <div class="input-field col s12 center" *ngIf="!this.proyectoCreado" [hidden]="this.proyectoProceso">
+
+                    <button class="btn waves-effect waves-light" type="submit" [disabled]="!proyectoForm.valid">
+                        <i class="material-icons left">send</i>Crear proyecto
+                    </button>
+                </div>
+                <div class="input-field col s12 center" *ngIf="false">
+                    <button class="btn waves-effect waves-light" (click)="resetForm(proyectoForm)">
+                        <i class="material-icons left">add_box</i>Nuevo Proyecto
+                    </button>
+                </div>
+                <div class="input-field col s12 center" *ngIf="this.proyectoCreado" [hidden]="this.proyectoProceso">
+                    <button class="btn waves-effect waves-light" type="submit" [disabled]="!proyectoForm.valid">
+                        <i class="material-icons left">sync</i>Actualizar Proyecto
+                    </button>
+                </div>
+                <div class="input-field col s12 center">
+                    <div class="preloader-wrapper active" *ngIf="this.proyectoProceso">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!-- Fin ingreso datos proyecto -->
+    </li>
+    <li [hidden]="!this.proyectoCreado">
+        <!-- Inicio ingreso datos verticales -->
+        <div class="collapsible-header">
+            <i class="material-icons">blur_linear</i>Información de Verticales
+        </div>
+        <div class="collapsible-body col s12 content">
+            <!-- Inicio tab de verticales con el detalle -->
+            <div class="col s12">
+                <ul class="tabs" id="tabs-verticales">
+                    <li class="tab col s6" (click)="onChangeTab()">
+                        <a class="light-blue-text accent-3" href="#tab1">Verticales</a>
+                    </li>
+                    <li class="tab col s6">
+                        <a class="light-blue-text accent-3" href="#tab2">Detalle Vertical</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Fin tab de verticales con el detalle -->
+            <!-- Inicio tab con la informacion de las verticales ingresadas -->
+            <div class="col s12" id="tab1">
+                <!-- Inicio select tipo de verticales -->
+                <div class="input-field col s8 ">
+                    <i class="material-icons prefix">arrow_drop_down_circle</i>
+                    <select id="idTipoVertical" name="IdTipoVertical" #idTipoVertical="ngModel" (change)="selectTiposVerticales()" ngModel required>
+                    </select>
+                    <label class="blue-text" for="idTipoVertical">Tipo Vertical</label>
+                    <span [hidden]="idTipoVertical == '-1'" class="helper-text" data-error="Seleccione un tipo de vertical"></span>
+                </div>
+                <!-- Fin select tipo de verticales -->
+                <div class="input-field col s4 center">
+                    <button class="btn waves-effect waves-light" type="submit" (click)="agregarModal(null,null)">
+                        <i class="material-icons left">add</i>Agregar Vertical
+                    </button>
+                </div>
+
+                <!-- Inicio Tabla con verticales -->
+                <div id="Verticales" class="col s12">
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th>Tipo Vertical</th>
+                                <th>Total Ponderación vertical</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let vertical of pagedItemsVerticales">
+                                <td>{{vertical.tipoVertical}}</td>
+                                <td>{{vertical.totalPonderacionVertical}}</td>
+                                <td colspan="2">
+                                    <a class="btn-floating btn-small waves-effect waves-light green">
+                                        <i class="tiny material-icons" (click)="nextTab(true,vertical.idVertical, vertical.idTipoVertical)">edit</i>
+                                    </a>
+                                    <a class="btn-floating btn-small waves-effect waves-light red">
+                                        <i class="tiny material-icons" (click)="EliminarVertical(vertical.idVertical)">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <!-- paginacion verticales -->
+                    <ul *ngIf="pagerVerticales.pages && pagerVerticales.pages.length" class="pagination">
+                        <li [ngClass]="{disabled:pagerVerticales.currentPage === 1}">
+                            <a (click)="setPageVerticales(1)">Primero</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerVerticales.currentPage === 1}">
+                            <a (click)="setPageVerticales(pagerVerticales.currentPage - 1)">Atras</a>
+                        </li>
+                        <li *ngFor="let page of pagerVerticales.pages" [ngClass]="{active:pagerVerticales.currentPage === page}">
+                            <a (click)="setPageVerticales(page)">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerVerticales.currentPage === pagerVerticales.totalPages}">
+                            <a (click)="setPageVerticales(pagerVerticales.currentPage + 1)">Siguiente</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerVerticales.currentPage === pagerVerticales.totalPages}">
+                            <a (click)="setPageVerticales(pagerVerticales.totalPages)">Ultimo</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Fin Tabla con verticales -->
+
+            </div>
+            <!-- Fin tab con la informacion de las verticales ingresadas -->
+            <!-- Inicio tab con el detalle de las verticales ingresadas -->
+            <div class="col s12" id="tab2">
+                <div id="verticalDetalle" class="table-responsive col s12" *ngIf="this.verticalSeleccionada">
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Acciones</th>
+                                <th>Tipo_Vertical</th>
+                                <th>Ambito</th>
+                                <th>Familia</th>
+                                <th>Clase</th>
+                                <th>Cantidad</th>
+                                <th>Descripcion</th>
+                                <th>Tipo Capex</th>
+                                <th>Valor Mes</th>
+                                <th>Valor Cop</th>
+                                <th>Valor Usd</th>
+                                <th>Mes causación</th>
+                                <th>Mes Inicio</th>
+                                <th>Duracion</th>
+                                <th>Total Cop</th>
+                                <th>Total Ponderación</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let verticalEquipo of pagedItemsEquipos">
+                                <td colspan="2">
+                                    <a class="btn-floating btn-small waves-effect waves-light green" *ngIf="!verticalEquipo.esActivo">
+                                        <i class="tiny material-icons" (click)="agregarModal(verticalEquipo.idEquipo, verticalEquipo.idFamilia, verticalForm)">edit</i>
+                                    </a>
+                                    <a class="btn-floating btn-small waves-effect waves-light red">
+                                        <i class="tiny material-icons" (click)="EliminarEquipo(verticalEquipo.idEquipo, verticalEquipo.esActivo)">delete</i>
+                                    </a>
+                                </td>
+                                <td>{{verticalEquipo.tipoVertical}}</td>
+                                <td>{{verticalEquipo.ambito}}</td>
+                                <td>{{verticalEquipo.familia}}</td>
+                                <td>{{verticalEquipo.clase}}</td>
+                                <td>{{verticalEquipo.cantidad}}</td>
+                                <td>{{verticalEquipo.descripcion}}</td>
+                                <td>{{verticalEquipo.nombreTipoPago}}</td>
+                                <td>{{verticalEquipo.valorMes}}</td>
+                                <td>{{verticalEquipo.valorCop}}</td>
+                                <td>{{verticalEquipo.valorUsd}}</td>
+                                <td>{{verticalEquipo.mesCausacion}}</td>
+                                <td>{{verticalEquipo.mesInicio}}</td>
+                                <td>{{verticalEquipo.duracion}}</td>
+                                <td>{{verticalEquipo.totalValorCop}}</td>
+                                <td>{{verticalEquipo.totalPonderacionUnidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Paginacion detalle verticales -->
+                    <ul *ngIf="pagerEquipos.pages && pagerEquipos.pages.length" class="pagination">
+                        <li [ngClass]="{disabled:pagerEquipos.currentPage === 1}">
+                            <a (click)="setPageEquipos(1)">Primero</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerEquipos.currentPage === 1}">
+                            <a (click)="setPageEquipos(pagerEquipos.currentPage - 1)">Atras</a>
+                        </li>
+                        <li *ngFor="let page of pagerEquipos.pages" [ngClass]="{active:pagerEquipos.currentPage === page}">
+                            <a (click)="setPageEquipos(page)">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerEquipos.currentPage === pagerEquipos.totalPages}">
+                            <a (click)="setPageEquipos(pagerEquipos.currentPage + 1)">Siguiente</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerEquipos.currentPage === pagerEquipos.totalPages}">
+                            <a (click)="setPageEquipos(pagerEquipos.totalPages)">Ultimo</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col 12" *ngIf="!this.verticalSeleccionada">
+                    <span>Seleccione una vertical</span>
+                </div>
+
+            </div>
+            <!-- Fin tab con el detalle de las verticales ingresadas -->
+        </div>
+        <!-- Fin ingreso datos verticales -->
+    </li>
+</ul>
+
+
+<!-- Inicio modal ingreso informacion para una vertical verticales -->
+<div class="modal " id="agregarVerticalModal">
+
+    <!-- tabs ingreso de componentes -->
+    <div class="col s12" [hidden]="this.editarComponente">
+        <ul class="tabs" id="tabs-modal">
+            <li class="tab col s6">
+                <a class="light-blue-text accent-3" href="#tab3">Nueva Vertical</a>
+            </li>
+            <li class="tab col s6">
+                <a class="light-blue-text accent-3" href="#tab4">Activos Existentes</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="modal-content center-align" id="tab3">
+        <h6 *ngIf="this.editarComponente">
+            <i class="material-icons">info</i>
+            <strong>Editar Vertical</strong>
+        </h6>
+        <div *ngIf="this.editarComponente" class="divider"></div>
+        <form id="equipoForm" class="col s10 offset-s1 container-form blue-text" (ngSubmit)="OnSubmitVertical(equipoForm)" [formGroup]="equipoForm">
+            <!-- Inicio informacion basica de la vertical  -->
+            <div class="input-field col s3">
+                <select id="idFamilia" name="IdFamilia" formControlName="idFamilia" (change)="selectFamiliaClases()" ngModel required>
+                </select>
+                <label class="blue-text" for="idFamilia" id="lblIdFamilia">Familia</label>
+                <span class="helper-text" data-error="Campo obligatorio"></span>
+            </div>
+            <div class="input-field col s3">
+                <select id="idClase" name="IdClase" formControlName="idClase" ngModel required>
+                </select>
+                <label class="blue-text" for="idClase" id="lblIdClase">Clase</label>
+                <span class="helper-text" data-error="Campo obligatorio"></span>
+            </div>
+            <div class="input-field col s3">
+                <i class="material-icons prefix">border_outer</i>
+                <input id="cantidad" name="Cantidad" formControlName="cantidad" type="number" class="validate" (keyup)="isCharValid($event, 'number')" (keypress)="maxLength($event)" max="32767" data-length="5" ngModel required>
+                <label class="blue-text" for="cantidad" id="lblCantidad">Cantidad</label>
+                <span class="helper-text" data-error="Campo obligatorio - Valor máximo 32767"></span>
+            </div>
+            <div class="input-field col s3">
+                <i class="material-icons prefix">attach_money</i>
+                <input id="valorMes" name="ValorMes" formControlName="valorMes" type="text" class="validate" (keyup)="formatValue($event)" (keypress)="isCharValid($event, 'number')" ngModel required>
+                <label class="blue-text" for="valorMes" id="lblValorMes">Valor unitario</label>
+                <span class="helper-text" data-error="Campo obligatorio - Máximo 9 dígitos"></span>
+            </div>
+
+            <!-- Opcional -->
+            <div class="input-field col s6">
+                <i class="material-icons prefix">font_download</i>
+                <input id="ambito" name="Ambito" formControlName="ambito" type="text" class="validate" (keypress)="isCharValid($event, 'text')" (keyup)="maxLength($event)" maxlenght="50" data-length="50" ngModel required>
+                <label class="blue-text" for="ambito" id="lblAmbito">Ambito</label>
+                <span class="helper-text" data-error="Campo obligatorio"></span>
+            </div>
+            <!-- Opcional -->
+            <div class="input-field col s6">
+                <i class="material-icons prefix">note</i>
+                <input id="descripcion" name="Descripcion" formControlName="descripcion" type="text" class="validate" (keypress)="isCharValid($event, 'text')" (keyup)="maxLength($event)" maxlenght="200" data-length="200" ngModel required>
+                <label class="blue-text" for="descripcion" id="lblDescripcion">Descripción</label>
+                <span class="helper-text" data-error="Campo obligatorio "></span>
+            </div>
+            <div class="input-field col s3">
+                <select id="verticalTipoPago" name="VerticalTipoPago" formControlName="verticalTipoPago" (change)="mostrarTipoPago()" ngModel required>
+                </select>
+                <label class="blue-text" for="verticalTipoPago" id="lblVerticalTipoPago">Tipo costo</label>
+            </div>
+            <!-- Inicio vertical tipo pago -->
+            <!-- <div class="col s12"> -->
+            <div class="input-field col s2">
+                <input id="valorCop" name="ValorCop" formControlName="valorCop" type="text" class="validate" (keyup)="formatValue($event)" (keypress)="isCharValid($event, 'number')" (keydown)="keyPressCopUsd('COP')" ngModel>
+                <label class="blue-text" for="valorCop" id="lblValorCop">Valor Cop</label>
+                <span class="helper-text" data-error="Campo obligatorio"></span>
+            </div>
+            <div class="input-field col s2">
+                <input id="valorUsd" name="ValorUsd" formControlName="valorUsd" type="text" class="validate" (keyup)="formatValue($event)" (keypress)="isCharValid($event, 'number')" (keydown)="keyPressCopUsd('USD')" ngModel>
+                <label class="blue-text" for="valorUsd" id="lblValorUsd">Valor USD</label>
+                <span class="helper-text" data-error="Campo obligatorio"></span>
+            </div>
+            <div class="input-field col s2" [hidden]="this.mostrarOpexRecurrente">
+                <input id="mesCausacion" name="MesCausacion" formControlName="mesCausacion" type="number" class="validate" (keyup)="isCharValid($event, 'number')" (keypress)="maxLength($event)" max="255" data-length="3" ngModel>
+                <label class="blue-text" for="mesCausacion" id="lblMesCausacion">Mes causación</label>
+                <span class="helper-text" data-error="Campo obligatorio - Valor máximo 255"></span>
+            </div>
+            <div class="input-field col s2" [hidden]="!this.mostrarOpexRecurrente">
+                <input id="mesInicio" name="MesInicio" formControlName="mesInicio" type="number" (keyup)="isCharValid($event, 'number')" (keypress)="maxLength($event)" max="255" data-length="3" ngModel>
+                <label class="blue-text" for="mesInicio" id="lblMesInicio">Mes inicio</label>
+                <span class="helper-text" data-error="Campo obligatorio - Valor máximo 255"></span>
+            </div>
+            <div class="input-field col s2" [hidden]="!this.mostrarOpexRecurrente">
+                <input id="duracionVertical" name="DuracionVertical" formControlName="duracionVertical" type="number" (keyup)="isCharValid($event, 'number')" (keypress)="maxLength($event)" max="255" data-length="3" ngModel>
+                <label class="blue-text" for="duracionVertical" id="lblDuracionVertical">Duración</label>
+                <span class="helper-text" data-error="Campo obligatorio - Valor máximo 255"></span>
+            </div>
+            <!-- </div> -->
+            <!-- Fin vertical tipo pago -->
+            <div class="input-field col s12 center" *ngIf="!this.editarComponente" [hidden]="this.equipoProceso">
+
+                <button class="btn waves-effect waves-light" type="submit" [disabled]="!equipoForm.valid">
+                    <i class="material-icons left">send</i>Guardar Vertical
+                </button>
+            </div>
+            <div class="input-field col s12 center" *ngIf="this.editarComponente" [hidden]="this.equipoProceso">
+                <button class="btn waves-effect waves-light" type="submit" [disabled]="!equipoForm.valid">
+                    <i class="material-icons left">sync</i>Actualizar Vertical
+                </button>
+            </div>
+
+            <div class="input-field col s12 center">
+                <div class="preloader-wrapper active" *ngIf="this.equipoProceso">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div class="modal-content center-align" id="tab4" [hidden]="this.editarComponente">
+        <!-- <h6>
+                <i class="material-icons">info</i>
+                <strong>Detalle de Activos</strong>
+            </h6>
+            <div class="divider"></div> -->
+        <form id="activosVertical" class="col s10 offset-s1 container-form blue-text" (ngSubmit)="OnSubmitActivos(activosForm)" #activosForm="ngForm">
+            <!-- Inicio activos existentes en bodega  -->
+            <div class="input-field col s6">
+                <select id="idFamiliaActivo" name="IdFamiliaActivo" (change)="selectFamiliaClases(true)" ngModel required>
+                </select>
+                <label class="blue-text" for="idFamiliaActivo">Familia</label>
+                <span class="helper-text" data-error="Seleccione una familia"></span>
+            </div>
+            <div class="input-field col s6">
+                <select id="idClaseActivo" name="IdClaseActivo" (change)="ConsultaActivos()" ngModel required>
+                </select>
+                <label class="blue-text" for="idClaseActivo">Clase</label>
+                <span class="helper-text" data-error="Seleccione una clase"></span>
+            </div>
+
+            <!-- Inicio tabla con activos  -->
+
+            <div class="col s12" id="tab2">
+                <div id="activoslDetalle" class="table-responsive col s12">
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th>Sel.</th>
+                                <th>Familia</th>
+                                <th>Clase</th>
+                                <th>Referencia</th>
+                                <th>Serial</th>
+                                <th>Descripcion</th>
+                                <th>Fecha</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let activos of pagedItemsActivos">
+                                <td>
+                                    <input #agregarActivo type="checkbox" class="checkbox" (change)="checkedActivos(activos.idActivo, agregarActivo.checked )" />
+                                    <label for="agregarActivo"></label>
+                                </td>
+                                <td>{{activos.familia}}</td>
+                                <td>{{activos.clase}}</td>
+                                <td>{{activos.referencia}}</td>
+                                <td>{{activos.serial}}</td>
+                                <td>{{activos.descripcion}}</td>
+                                <td>{{activos.fechaCompra}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Paginacion detalle verticales -->
+                    <ul *ngIf="pagerActivos.pages && pagerActivos.pages.length" class="pagination">
+                        <li [ngClass]="{disabled:pagerActivos.currentPage === 1}">
+                            <a (click)="setPageActivos(1)">Primero</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerActivos.currentPage === 1}">
+                            <a (click)="setPageActivos(pagerActivos.currentPage - 1)">Atras</a>
+                        </li>
+                        <li *ngFor="let page of pagerActivos.pages" [ngClass]="{active:pagerActivos.currentPage === page}">
+                            <a (click)="setPageActivos(page)">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerActivos.currentPage === pagerActivos.totalPages}">
+                            <a (click)="setPageActivos(pagerActivos.currentPage + 1)">Siguiente</a>
+                        </li>
+                        <li [ngClass]="{disabled:pagerActivos.currentPage === pagerActivos.totalPages}">
+                            <a (click)="setPageActivos(pagerActivos.totalPages)">Ultimo</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <!-- Fin tabla con activos -->
+
+            <!-- Inicio activos existentes en bodega  -->
+            <div class="input-field col s12 center" [hidden]="this.activoProceso">
+
+                <button class="btn waves-effect waves-light" type="submit" [disabled]="!this.activosSeleccionados">
+                    <i class="material-icons left">send</i>Agregar Activo
+                </button>
+            </div>
+            <div class="input-field col s12 center">
+                <div class="preloader-wrapper active" *ngIf="this.activoProceso">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Fin modal ingreso informacion verticales -->
+
+<div class="fixed-action-btn" id="divBotonFlotante" [hidden]="!this.mostrarOpcionesProyecto">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+
+        <li>
+            <a class="btn-floating blue">
+                <i class="material-icons" (click)="ProyectoEstadoCambio()">arrow_forward</i>
+            </a>
+        </li>
+        <li>
+            <a class="btn-floating green">
+                <i class="material-icons" (click)="Descargar()">file_download</i>
+            </a>
+        </li>
+
+    </ul>
+</div>

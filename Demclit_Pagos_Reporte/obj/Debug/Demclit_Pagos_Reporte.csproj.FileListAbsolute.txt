@@ -1,0 +1,6 @@
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_Pagos_Reporte\obj\Debug\Demclit_Pagos_Reporte.csprojAssemblyReference.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_Pagos_Reporte\obj\Debug\Demclit_Pagos_Reporte.App_Data.ConnectionSources.resources
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_Pagos_Reporte\obj\Debug\Demclit_Pagos_Reporte.csproj.GenerateResource.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_Pagos_Reporte\obj\Debug\Demclit_Pagos_Reporte.csproj.CoreCompileInputs.cache
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_Pagos_Reporte\obj\Debug\Demclit_Pagos_Reporte.exe
+C:\Users\eatellezpi\source\Workspaces\Demclit\Demclit_Pagos_Reporte\obj\Debug\Demclit_Pagos_Reporte.pdb
